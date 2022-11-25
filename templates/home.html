@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    {% extends 'base.html' %}
+    {% block content  %}
+    
+    <div class="w1" style="margin: 40px;">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+                {% for post in object_list %}
+                    <div class="col">
+                    <div class="card h-100">
+                        <img src="{{ post.photo.url }}" class="card-img-top" width="200px" height="200px" alt="...">
+                        <div class="card-body">
+                        <a href="{% url 'post_detail' post.pk  %}"><h5 class="card-title">{{post.title}}</h5></a>
+                        <p class="card-text">{{post.summery}}</p>
+                        </div>
+                        <div class="card-footer">
+                        <small class="text-muted">{{post.data}}</small><br>
+                        <small class="text-muted">admin: {{post.admin}} tomonidan joylangan</small>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="card border-success mb-3" style="max-width: 100%; margin: 50px;">
+        <div class="card-header bg-transparent border-success">Header</div>
+        <div class="card-body text-success">
+          <h5 class="card-title">Success card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+        <div class="card-footer bg-transparent border-success">Footer</div>
+      </div>
+    {% endblock content %}
+</body>
+</html>
